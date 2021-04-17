@@ -12,6 +12,9 @@ class Banner extends React.Component {
 
     this.state = {
       counter: this.props.count,
+      num1: 0,
+      num2: 0,
+      sum: 0,
     };
   }
 
@@ -39,6 +42,32 @@ class Banner extends React.Component {
         >
           RemoveMoreState
         </button>
+        <input
+          onChange={(e) =>
+            this.setState({
+              num1: parseInt(e.target.value),
+            })
+          }
+          placeholder="num1"
+        />
+        <input
+          onChange={(e) =>
+            this.setState({
+              num2: parseInt(e.target.value),
+            })
+          }
+          placeholder="num2"
+        />
+        <button
+          onClick={() =>
+            this.setState({
+              sum: this.state.num1 + this.state.num2,
+            })
+          }
+        >
+          getRes
+        </button>
+        <div>{this.state.sum}</div>
       </div>
     );
   }
