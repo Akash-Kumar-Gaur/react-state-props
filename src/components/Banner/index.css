@@ -1,7 +1,8 @@
 .banner {
-  background: #828282;
-  height: 300px;
+  /* background: #828282;  */
+  /* height: 300px; */
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 100px;
 }

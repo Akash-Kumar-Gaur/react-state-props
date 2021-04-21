@@ -6,68 +6,85 @@ import "./index.css";
 
 let varr = 10; // variable not a state variable
 
+//lifecycle methods
+// componentWillMount -> before component renders -> api calls (Data calls)
+// componentDidMount -> after component renders -> data to be user afterwards
+// componentWillReceiveProps -> update the states with new props replacing the old one
+
+// componentWillUnmount -> before component exits/unmounts
+// componentDidUnmount -> after component exits/unmounts
+
+// componentShouldUpdate -> should update or not
+// componentDidUpdate -> component got updated
+
+// class components
+// - state
+// - props
+
+// functional components
+// - props
+// - state (only in latest react)
+
+// - state, state as props, props as state
+// - setState (update current state)
+
 class Banner extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: this.props.count,
+      counter: this.props.counter,
       num1: 0,
       num2: 0,
       sum: 0,
     };
   }
 
+  componentWillMount() {
+    console.log("before render");
+  }
+
+  componentDidMount() {
+    console.log("after render");
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      counter: nextProps.counter,
+    });
+  }
+
   render() {
     return (
       <div className="banner">
-        Banner {varr}
-        <button onClick={() => (varr += 1)}>AddMore</button>
-        Banner Ext {this.state.counter}
-        <button
-          onClick={() =>
-            this.setState({
-              counter: this.state.counter + 1,
-            })
-          }
+        {/* <div
+          style={{
+            height: "300px",
+            width: "400px",
+            background: "#88888820",
+            border: "5px solid #000",
+          }}
         >
-          AddMoreState
-        </button>
-        <button
-          onClick={() =>
-            this.setState({
-              counter: this.state.counter - 1,
-            })
-          }
+          border box
+        </div> */}
+        <div
+          style={{
+            margin: "15px",
+          }}
         >
-          RemoveMoreState
-        </button>
-        <input
-          onChange={(e) =>
-            this.setState({
-              num1: parseInt(e.target.value),
-            })
-          }
-          placeholder="num1"
-        />
-        <input
-          onChange={(e) =>
-            this.setState({
-              num2: parseInt(e.target.value),
-            })
-          }
-          placeholder="num2"
-        />
-        <button
-          onClick={() =>
-            this.setState({
-              sum: this.state.num1 + this.state.num2,
-            })
-          }
+          {this.state.counter}
+        </div>
+        {/* {console.log("render")} */}
+        {/* <div
+          style={{
+            height: "300px",
+            width: "400px",
+            background: "#88888820",
+            outline: "5px solid #000",
+          }}
         >
-          getRes
-        </button>
-        <div>{this.state.sum}</div>
+          no overlap
+        </div> */}
       </div>
     );
   }

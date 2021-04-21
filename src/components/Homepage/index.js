@@ -5,7 +5,12 @@ import "./index.css";
 
 function HomePage(props) {
   //   console.log("props", props);
-  return <div className="home">{props.headerName}</div>;
+  return (
+    <div className="home">
+      {props.headerName}
+      {props.pageNumber}
+    </div>
+  );
 }
 
 export default HomePage;
